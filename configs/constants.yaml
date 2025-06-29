@@ -1,0 +1,11 @@
+pagination:
+  default_page_size: 10
+  max_page_size: 100
+
+validation:
+  min_password_length: 8
+  max_name_length: 100
+
+business_rules:
+  max_products_per_user: 1000
+  default_product_status: "active"

@@ -1,0 +1,15 @@
+server:
+  host: "127.0.0.1"
+  port: 8080
+  mode: "debug" # debug, release, test
+  timeout: 30
+
+logging:
+  level: "info"
+  format: "json"
+  output: "stdout"
+
+cors:
+  allowed_origins: ["*"]
+  allowed_methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+  allowed_headers: ["*"]

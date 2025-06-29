@@ -1,0 +1,29 @@
+# database: # config
+driver: "sqlite" # sqlite, postgres, mysql
+
+sqlite:
+  path: "data/app.db"
+
+# postgres:
+#   host: "localhost"
+#   port: 5432
+#   user: "postgres"
+#   password: "password"
+#   dbname: "myapp"
+#   sslmode: "disable"
+#   timezone: "UTC"
+
+# mysql:
+#   host: "localhost"
+#   port: 3306
+#   user: "root"
+#   password: "password"
+#   dbname: "myapp"
+#   charset: "utf8mb4"
+#   parse_time: true
+#   loc: "Local"
+
+# connection_pool:
+#   max_idle_conns: 10
+#   max_open_conns: 100
+#   conn_max_lifetime: 3600 # seconds
