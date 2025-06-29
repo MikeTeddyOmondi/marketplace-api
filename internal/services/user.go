@@ -13,15 +13,17 @@ import (
 )
 
 type UserService struct {
-	repo      interfaces.UserRepository
-	constants *config.Constants
+    repo        interfaces.UserRepository
+    authService *AuthService
+    constants   *config.Constants
 }
 
-func NewUserService(repo interfaces.UserRepository, constants *config.Constants) *UserService {
-	return &UserService{
-		repo:      repo,
-		constants: constants,
-	}
+func NewUserService(repo interfaces.UserRepository, authService *AuthService, constants *config.Constants) *UserService {
+    return &UserService{
+        repo:        repo,
+        authService: authService,
+        constants:   constants,
+    }
 }
 
 func (s *UserService) CreateUser(ctx context.Context, user *models.User) error {

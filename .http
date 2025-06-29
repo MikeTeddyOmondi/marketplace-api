@@ -1,0 +1,46 @@
+### Health Check
+GET http://localhost:8080/health
+
+### Register User
+POST http://localhost:8080/api/v1/register
+Content-Type: application/json
+
+{
+    "name": "micoti",
+    "email": "mt@dev.com",
+    "password": "password"
+}
+
+### Login User
+POST http://localhost:8080/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "mt@dev.com",
+    "password": "password"
+}
+
+### List Users
+GET http://localhost:8080/api/v1/users?page=1&page_size=5&name=John
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiJtdEBkZXYuY29tIiwiZXhwIjoxNzUxNDcyMDE1fQ.1O4A3r6kktC5WRyg1edx2fsoMadQccy641J9P3RE8tM
+
+### Create Products
+POST http://localhost:8080/api/v1/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiJtdEBkZXYuY29tIiwiZXhwIjoxNzUxNDcyMDE1fQ.1O4A3r6kktC5WRyg1edx2fsoMadQccy641J9P3RE8tM
+
+{
+    "code": "P002",
+    "name": "HP Envy Laptop",
+    "description": "High-performance laptop",
+    "price": 32000,
+    "user_id": 1
+}
+
+### List Products
+GET http://localhost:8080/api/v1/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjoidXNlciIsInN1YiI6Im10QGRldi5jb20iLCJleHAiOjE3NTE0NzEyODN9.69Wx0U7MopHZstDvs9mbW4N8VyEymZ7Zze6TC2wnG80
+
+

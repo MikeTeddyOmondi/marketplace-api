@@ -77,10 +77,17 @@ type ConnectionPoolConfig struct {
 	ConnMaxLifetime int `yaml:"conn_max_lifetime"`
 }
 
+type AuthConfig struct {
+    JWTSecret       string `yaml:"jwt_secret"`
+    TokenExpiration int    `yaml:"token_expiration"`
+    PasswordCost    int    `yaml:"password_cost"`
+}
+
 type Constants struct {
-	Pagination    PaginationConfig    `yaml:"pagination"`
-	Validation    ValidationConfig    `yaml:"validation"`
-	BusinessRules BusinessRulesConfig `yaml:"business_rules"`
+    Pagination    PaginationConfig    `yaml:"pagination"`
+    Validation    ValidationConfig    `yaml:"validation"`
+    BusinessRules BusinessRulesConfig `yaml:"business_rules"`
+    Auth          AuthConfig          `yaml:"auth"`
 }
 
 type PaginationConfig struct {

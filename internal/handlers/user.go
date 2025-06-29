@@ -117,13 +117,13 @@ func (h *UserHandler) DeleteUser(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "user deleted successfully"})
 }
 
-func (h *UserHandler) RegisterRoutes(router *gin.RouterGroup) {
-	users := router.Group("/users")
-	{
-		users.POST("", h.CreateUser)
-		users.GET("", h.ListUsers)
-		users.GET("/:id", h.GetUser)
-		users.PUT("/:id", h.UpdateUser)
-		users.DELETE("/:id", h.DeleteUser)
-	}
+func (h *UserHandler) RegisterRoutes(router *gin.RouterGroup, authMiddleware gin.HandlerFunc, roleMiddleware gin.HandlerFunc) {
+    users := router.Group("/users")
+    users.Use(authMiddleware) // Require authentication for all /users routes
+
+    users.POST("", roleMiddleware, h.CreateUser)
+    users.GET("", roleMiddleware, h.ListUsers) // Only admin can list users
+    users.GET("/:id", h.GetUser) // Authenticated users can get user info
+    users.PUT("/:id", h.UpdateUser) // Add roleMiddleware if only admin/self can update
+    users.DELETE("/:id", roleMiddleware, h.DeleteUser) // Only admin can delete users
 }

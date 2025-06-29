@@ -9,3 +9,8 @@ validation:
 business_rules:
   max_products_per_user: 1000
   default_product_status: "active"
+
+auth:
+  jwt_secret: "strong-secret-key" # Should be 32+ chars
+  token_expiration: 72 # hours
+  password_cost: 14 # bcrypt cost factor

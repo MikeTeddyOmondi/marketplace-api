@@ -112,7 +112,6 @@ func (h *ProductHandler) DeleteProduct(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "product deleted successfully"})
 }
 
-// RegisterRoutes registers all product routes
 func (h *ProductHandler) RegisterRoutes(router *gin.RouterGroup) {
 	products := router.Group("/products")
 	{
