@@ -51,15 +51,15 @@ func main() {
 	userRepo := implementation.NewUserRepository(db)
 	productRepo := implementation.NewProductRepository(db)
 
-    // Initialize services
-    authService := services.NewAuthService(&cfg.Constants)
-    userService := services.NewUserService(userRepo, authService, &cfg.Constants)
-    productService := services.NewProductService(productRepo, userRepo, &cfg.Constants)
+	// Initialize services
+	authService := services.NewAuthService(&cfg.Constants)
+	userService := services.NewUserService(userRepo, authService, &cfg.Constants)
+	productService := services.NewProductService(productRepo, userRepo, &cfg.Constants)
 
-    // Initialize handlers
-    authHandler := handlers.NewAuthHandler(userService, authService)
-    userHandler := handlers.NewUserHandler(userService)
-    productHandler := handlers.NewProductHandler(productService)
+	// Initialize handlers
+	authHandler := handlers.NewAuthHandler(userService, authService)
+	userHandler := handlers.NewUserHandler(userService)
+	productHandler := handlers.NewProductHandler(productService)
 
 	// Setup router
 	router := gin.New()
@@ -85,13 +85,13 @@ func main() {
 	})
 
 	// API routes
-    api := router.Group("/api/v1")
-    authHandler.RegisterRoutes(api) // /register and /login
+	api := router.Group("/api/v1")
+	authHandler.RegisterRoutes(api) // /register and /login
 
-    protected := api.Group("")
-    protected.Use(middleware.AuthMiddleware(authService))
+	protected := api.Group("")
+	protected.Use(middleware.AuthMiddleware(authService))
 	userHandler.RegisterRoutes(protected, middleware.AuthMiddleware(authService), middleware.RoleMiddleware(models.RoleAdmin))
-    productHandler.RegisterRoutes(protected)
+	productHandler.RegisterRoutes(protected)
 
 	// Start server
 	srv := &http.Server{
